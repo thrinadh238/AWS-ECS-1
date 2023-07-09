@@ -17,8 +17,8 @@ resource "aws_ecs_task_definition" "task" {
   container_definitions    = <<DEFINITION
   [
     {
-      "name"      : "nginx",
-      "image"     : "nginx:1.23.1",
+      "name"      : "busybox",
+      "image"     : "769839497771.dkr.ecr.us-east-1.amazonaws.com/busybox:1.31.1",
       "cpu"       : 512,
       "memory"    : 2048,
       "essential" : true,
@@ -38,7 +38,7 @@ resource "aws_ecs_service" "service" {
   cluster          = aws_ecs_cluster.cluster.id
   task_definition  = aws_ecs_task_definition.task.id
   desired_count    = 1
-  launch_type      = "FARGATE"
+  launch_type      = "EC2"
   platform_version = "LATEST"
 
   network_configuration {
