@@ -11,7 +11,7 @@ resource "aws_kms_alias" "key-alias" {
 
 
 resource "aws_s3_bucket" "terraform-state" {
- bucket = "<BUCKET_NAME>"
+ bucket = "thri-ecs"
  acl    = "private"
 
  versioning {

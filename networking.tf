@@ -1,19 +1,19 @@
 data "aws_subnet" "ecs-subnet" {
   filter {
     name   = "tag:Name"
-    values = ["ecs-subnet"]
+    values = ["ecs-1"]
   }
 }
 output "ecs_subnet_id" {
   value = data.aws_subnet.ecs-subnet.id
 }
 
-data "aws_security_groups" "ecs-sg" {
+data "aws_security_group" "ecs-sg" {
   filter {
     name   = "tag:Name"
-    values = ["ecs-sg"]
+    values = ["ecs"]
   }
 }
 output "ecs_sg_id" {
-  value = data.aws_security_groups.ecs-sg.id
+  value = data.aws_security_group.ecs-sg.id
 }
